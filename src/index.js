@@ -8,5 +8,7 @@ const excludeSomeFunction = () => {
   console.log("Hello");
 };
 
+let myUnusedvar;
+
 toSomeFunction();
 excludeSomeFunction();

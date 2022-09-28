@@ -1,4 +1,5 @@
 const axios = require('axios').default;
+const { processorUrl } = require('./config')
 
 module.exports = {
   processors: {
@@ -8,7 +9,16 @@ module.exports = {
         console.log("*====================================");
         console.log(JSON.stringify(messages));
         console.log(path);
-        axios.post('http://localhost:1880/lint-data', messages)
+        const content = {
+          messages,
+          branch: "main",
+          repository: "my-repo",
+          mfe: "my-mfe",
+          owner: "NathPaiva",
+          buildId: "0x1da65",
+          buildUrl: "https://..."
+        }
+        axios.post(processorUrl, content)
           .then(() => console.log('feito meu patrão'));
         console.log("====================================");
         return [].concat(...messages);
