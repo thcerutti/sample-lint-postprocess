@@ -19,6 +19,7 @@ jobs:
           command: "echo Hello, World!"
       - run: echo "it is done!"
       - run: ls -a
+      - run: yarn lint
       - run: cat content.txt
 
 # Invoke jobs via workflows
