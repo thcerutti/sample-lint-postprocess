@@ -1,7 +1,5 @@
-//import uploadData from './dataUploader'
-// const axios = require('axios').default;
 const dataUploader = require('./dataUploader');
-//import {dataUploader} from './dataUploader';
+const fs = require('fs');
 
 module.exports = {
   processors: {
@@ -19,7 +17,7 @@ module.exports = {
           buildId: "0x1da65",
           buildUrl: "https://..."
         }
-
+        fs.appendFile('content.txt', JSON.stringify(content)+',', (err) => console.log(err));
         dataUploader.uploadLintData(content, messages);
         return [].concat(...messages);
       },

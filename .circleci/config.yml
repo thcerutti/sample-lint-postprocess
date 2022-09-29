@@ -19,6 +19,7 @@ jobs:
           command: "echo Hello, World!"
       - run: echo "it is done!"
       - run: ls -a
+      - run: cat content.txt
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
