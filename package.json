@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint src/**/*.js"
+    "lint": "eslint src/**/*.js",
+    "full-lint": "rm -rf node_modules && yarn && POST_URL=abc123 && yarn lint"
   },
   "author": "",
   "license": "ISC",

@@ -1,14 +1,15 @@
-const axios = require('axios').default;
-const { processorUrl } = require('./config')
+//import uploadData from './dataUploader'
+// const axios = require('axios').default;
+const dataUploader = require('./dataUploader');
+//import {dataUploader} from './dataUploader';
 
 module.exports = {
   processors: {
     myProcessor: {
       // takes a Message[][] and path
       postprocess: function (messages, path) {
-        console.log("*====================================");
-        console.log(JSON.stringify(messages));
-        console.log(path);
+        console.log(`Ran on file ${path}`);
+
         const content = {
           messages,
           branch: "main",
@@ -18,9 +19,8 @@ module.exports = {
           buildId: "0x1da65",
           buildUrl: "https://..."
         }
-        axios.post(processorUrl, content)
-          .then(() => console.log('feito meu patrão'));
-        console.log("====================================");
+
+        dataUploader.uploadLintData(content, messages);
         return [].concat(...messages);
       },
     },
