@@ -20,6 +20,7 @@ jobs:
       - run: cat content.txt
       - run: sudo apt install curl
       - run: MY_CONTENT=`cat content.txt`
+      - run: echo $MY_CONTENT
       - run: >-
           curl -d "${MY_CONTENT}" -H 'Content-Type: application/json' -X POST https://e5c9-177-41-240-174.sa.ngrok.io/lint-data-in --http1.1
 
