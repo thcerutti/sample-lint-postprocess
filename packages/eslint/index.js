@@ -1,5 +1,4 @@
-// const dataUploader = require('./dataUploader');
-const fs = require('fs');
+const fs = require("fs");
 
 module.exports = {
   processors: {
@@ -8,23 +7,28 @@ module.exports = {
       postprocess: function (messages, path) {
         console.log(`Ran on file ${path}`);
 
-        const content = {
-          messages,
-          branch: "main",
-          repository: "my-repo",
-          mfe: "my-mfe",
-          owner: "NathPaiva",
-          buildId: "0x1da65",
-          buildUrl: "https://..."
-        }
-        const fileName = 'content.txt'
-        if (fs.existsSync(fileName)) {
-          fs.appendFile(fileName, ','+JSON.stringify(content), (err) => console.log(err));
-        } else {
-          fs.appendFile(fileName, JSON.stringify(content), (err) => console.log(err));
-        }
+        const fileName = "content.txt";
+        const appendToFile = (fileName, message) => {
+          let prefix = fs.existsSync(fileName) ? "," : "";
+          fs.appendFile(fileName, prefix + JSON.stringify(message), (err) =>
+            console.log(err)
+          );
+        };
 
-        // dataUploader.uploadLintData(content, messages);
+        messages.flat().map((message) => {
+          let warningMessage = {
+            branch: "main",
+            repository: "my-repo",
+            mfe: "my-mfe",
+            owner: "NathPaiva",
+            buildId: "0x1da65",
+            buildUrl: "https://...",
+            path,
+            ...message,
+          };
+          appendToFile(fileName, warningMessage);
+        });
+
         return [].concat(...messages);
       },
     },
