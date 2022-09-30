@@ -20,6 +20,28 @@ jobs:
       - run: cat content.txt
       - run: sudo apt install curl
       - run: curl -d '{\"name\":\"thiago\"}' -H \"Content-Type:application/json\" -X POST https://e5c9-177-41-240-174.sa.ngrok.io/lint-data-in --http1.1
+  my-sample-http-request:
+    docker:
+      - image: cimg/node:14.17
+    steps:
+      - getCurrentTime:
+          call: http.get
+          args:
+          url: https://us-central1-workflowsample.cloudfunctions.net/datetime
+          result: currentDateTime
+      - setFromCallResult:
+          assign:
+          - searchTerm: ${currentDateTime.body.dayOfTheWeek}
+      - readWikipedia:
+          call: http.get
+          args:
+          url: https://en.wikipedia.org/w/api.php
+          query:
+            action: opensearch
+            search: ${searchTerm}
+          result: wikiResult
+      - returnOutput:
+          return: ${wikiResult.body[1]}
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -27,3 +49,4 @@ workflows:
   say-hello-workflow:
     jobs:
       - say-hello
+      - my-sample-http-request
