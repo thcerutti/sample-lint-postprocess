@@ -7,5 +7,6 @@ module.exports = {
   processor: 'my-lint/myProcessor',
   rules: {
     "no-undef": 1,
+    "no-unused-vars": 1,
   },
 };

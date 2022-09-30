@@ -1,26 +1,33 @@
-//import uploadData from './dataUploader'
-// const axios = require('axios').default;
-const dataUploader = require('./dataUploader');
-//import {dataUploader} from './dataUploader';
+const fs = require("fs");
 
 module.exports = {
   processors: {
     myProcessor: {
-      // takes a Message[][] and path
       postprocess: function (messages, path) {
-        console.log(`Ran on file ${path}`);
 
-        const content = {
-          messages,
-          branch: "main",
-          repository: "my-repo",
-          mfe: "my-mfe",
-          owner: "NathPaiva",
-          buildId: "0x1da65",
-          buildUrl: "https://..."
-        }
+        const appendToFile = (message) => {
+          const fileName = "content.txt";
+          
+          let prefix = fs.existsSync(fileName) ? "," : "";
+          fs.appendFile(fileName, prefix + JSON.stringify(message), (err) =>
+            console.log(err)
+          );
+        };
 
-        dataUploader.uploadLintData(content, messages);
+        messages.flat().map((message) => {
+          let warningMessage = {
+            branch: "main",
+            repository: "my-repo",
+            mfe: "my-mfe",
+            owner: "NathPaiva",
+            buildId: "0x1da65",
+            buildUrl: "https://...",
+            path,
+            ...message,
+          };
+          appendToFile(warningMessage);
+        });
+
         return [].concat(...messages);
       },
     },
