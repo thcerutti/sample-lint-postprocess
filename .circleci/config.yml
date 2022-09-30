@@ -18,8 +18,6 @@ jobs:
       - run: yarn
       - run: yarn lint
       - run: cat content.txt
-      - run: sudo apt install curl
-      - run: curl -d '{\"name\":\"thiago\"}' -H \"Content-Type:application/json\" -X POST https://e5c9-177-41-240-174.sa.ngrok.io/lint-data-in --http1.1
       - getCurrentTime:
           call: http.get
           args:
