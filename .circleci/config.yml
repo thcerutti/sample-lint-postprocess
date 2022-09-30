@@ -20,7 +20,7 @@ jobs:
       - run: cat content.txt
       - run: sudo apt install curl
       - run: >-
-          curl -d "$(cat content.txt)" -H 'Content-Type: text/plain' -X POST https://e5c9-177-41-240-174.sa.ngrok.io/lint-data-in --http1.1
+          curl -d @cat content.txt -H 'Content-Type: text/plain' -X POST https://e5c9-177-41-240-174.sa.ngrok.io/lint-data-in --http1.1
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
