@@ -3,12 +3,11 @@ const fs = require("fs");
 module.exports = {
   processors: {
     myProcessor: {
-      // takes a Message[][] and path
       postprocess: function (messages, path) {
-        console.log(`Ran on file ${path}`);
 
-        const fileName = "content.txt";
-        const appendToFile = (fileName, message) => {
+        const appendToFile = (message) => {
+          const fileName = "content.txt";
+          
           let prefix = fs.existsSync(fileName) ? "," : "";
           fs.appendFile(fileName, prefix + JSON.stringify(message), (err) =>
             console.log(err)
@@ -26,7 +25,7 @@ module.exports = {
             path,
             ...message,
           };
-          appendToFile(fileName, warningMessage);
+          appendToFile(warningMessage);
         });
 
         return [].concat(...messages);
