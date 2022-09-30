@@ -17,7 +17,13 @@ module.exports = {
           buildId: "0x1da65",
           buildUrl: "https://..."
         }
-        fs.appendFile('content.txt', JSON.stringify(content)+',', (err) => console.log(err));
+        const fileName = 'content.txt'
+        if (fs.existsSync(fileName)) {
+          fs.appendFile(fileName, ','+JSON.stringify(content), (err) => console.log(err));
+        } else {
+          fs.appendFile(fileName, JSON.stringify(content), (err) => console.log(err));
+        }
+
         // dataUploader.uploadLintData(content, messages);
         return [].concat(...messages);
       },
