@@ -1,4 +1,4 @@
-const dataUploader = require('./dataUploader');
+// const dataUploader = require('./dataUploader');
 const fs = require('fs');
 
 module.exports = {
@@ -18,7 +18,7 @@ module.exports = {
           buildUrl: "https://..."
         }
         fs.appendFile('content.txt', JSON.stringify(content)+',', (err) => console.log(err));
-        dataUploader.uploadLintData(content, messages);
+        // dataUploader.uploadLintData(content, messages);
         return [].concat(...messages);
       },
     },
