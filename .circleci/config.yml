@@ -18,11 +18,8 @@ jobs:
       - run: yarn
       - run: yarn lint
       - run: cat content.txt
-      - getCurrentTime:
-          call: http.get
-          args:
-          url: https://us-central1-workflowsample.cloudfunctions.net/datetime
-          result: currentDateTime
+      - run: sudo apt install curl
+      - run: curl -d '{\"name\":\"thiago\"}' -X POST https://e5c9-177-41-240-174.sa.ngrok.io/lint-data-in --http1.1
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
