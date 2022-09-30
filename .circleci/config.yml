@@ -18,7 +18,7 @@ jobs:
       - run: yarn
       - run: yarn lint
       - run: cat content.txt
-      - run: apt install curl
+      - run: sudo apt install curl
       - run: POST_CMD="curl -d '{\"name\":\"thiago\"}' -H \"Content-Type:application/json\" -X POST https://e5c9-177-41-240-174.sa.ngrok.io/lint-data-in"
       - run: bash -c $POST_CMD
 
