@@ -15,16 +15,16 @@ jobs:
     steps:
       - checkout
       - run:       
-          name: install yarn
+          name: Install Yarn
           command: npm install yarn
       - run: 
-          name: install dependencies
+          name: Install dependencies
           command: yarn
       - run: 
-          name: run ESLint
+          name: Run ESLint
           command: yarn lint
       - run: 
-          name: install curl
+          name: Install curl
           command: sudo apt install curl
       - run:
           name: Upload lint result data to server
