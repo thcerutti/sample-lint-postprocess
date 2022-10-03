@@ -1,0 +1,5 @@
+# RD Station code owners, here are some of the people responsible for keeping
+# the code purpose on this package straight.
+# https://help.github.com/articles/about-codeowners/
+
+/packages/eslint/ @ResultadosDigitais/wanderlust
