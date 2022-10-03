@@ -16,12 +16,12 @@ module.exports = {
 
         messages.flat().map((message) => {
           let warningMessage = {
-            branch: "main",
-            repository: "my-repo",
+            branch: process.env.CIRCLE_BRANCH,
+            repository: process.env.CIRCLE_PROJECT_REPONAME,
             mfe: "my-mfe",
             owner: "NathPaiva",
-            buildId: "0x1da65",
-            buildUrl: "https://...",
+            buildId: process.env.CIRCLE_BUILD_NUM,
+            buildUrl: process.env.CIRCLE_BUILD_URL,
             path,
             ...message,
           };
