@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src/**/*.js",
-    "full-lint": "rm -rf node_modules && yarn && POST_URL=abc123 && yarn lint",
+    "full-lint": "rm -rf node_modules && yarn && POST_URL=abc123 && yarn eslint src/**/*.js",
     "full-lint-with-output": "rm -rf node_modules && yarn && POST_URL=abc123 && yarn lint -f json -o ./lint-output.json"
 
   },

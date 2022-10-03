@@ -6,9 +6,8 @@ Using yarn to install packages:
 yarn install
 ```
 
-Running the lint:
+Running the lint locally:
 
 ```
-yarn lint
+yarn full-lint
 ```
-

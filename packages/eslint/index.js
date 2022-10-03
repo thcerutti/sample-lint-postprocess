@@ -9,9 +9,10 @@ module.exports = {
           const fileName = "content.txt";
           
           let prefix = fs.existsSync(fileName) ? "," : "";
-          fs.appendFile(fileName, prefix + JSON.stringify(message), (err) =>
-            console.log(err)
-          );
+          fs.appendFile(fileName, prefix + JSON.stringify(message), (err) =>{
+            if (err)
+              console.log('Error: ', err)
+          });
         };
 
         messages.flat().map((message) => {
