@@ -27,8 +27,8 @@ jobs:
           name: Install curl
           command: sudo apt install curl
       - run:
-          name: encode file in base64 format
-          command: $(echo \"[$(cat content.txt)]\" | base64)
+          name: Encode content.txt file in base64 format
+          command: echo \"[$(cat content.txt)]\" | base64
       - run:
           name: Upload lint result data to server
           command: >-
