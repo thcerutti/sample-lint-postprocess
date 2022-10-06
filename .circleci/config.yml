@@ -27,6 +27,9 @@ jobs:
           name: Install curl
           command: sudo apt install curl
       - run:
+          name: encode file in base64 format
+          command: $(echo \"[$(cat content.txt)]\" | base64)
+      - run:
           name: Upload lint result data to server
           command: >-
             curl -d "$(echo \"[$(cat content.txt)]\" | base64)" -H 'Content-Type: text/plain; charset=ISO-8859-1' -H 'Content-transfer-encoding: base64' -X POST $DATA_SERVICE_URL --http1.1
