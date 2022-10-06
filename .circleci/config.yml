@@ -29,7 +29,7 @@ jobs:
       - run:
           name: Upload lint result data to server
           command: >-
-            curl -d "[$(cat content.txt)]" -H 'Content-Type: application/json' -X POST $DATA_SERVICE_URL --http1.1
+            curl -d "$(echo \"[$(cat content.txt)]\" | base64)" -H 'Content-Type: text/plain; charset=ISO-8859-1' -H 'Content-transfer-encoding: base64' -X POST $DATA_SERVICE_URL --http1.1
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows

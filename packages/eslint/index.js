@@ -23,6 +23,7 @@ module.exports = {
             owner: "NathPaiva",
             buildId: process.env.CIRCLE_BUILD_NUM,
             buildUrl: process.env.CIRCLE_BUILD_URL,
+            timestamp: new Date().toISOString(),
             path,
             ...message,
           };
