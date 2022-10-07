@@ -3,11 +3,10 @@ const fs = require("fs");
 fs.readFile("./content.txt", { encoding: "utf8" }, (_, data) => {
   let fileJsonData = `[${data}]`;
 
-  console.log(Buffer.from(fileJsonData).toString("base64"));
   let postData = {
     messages: [
       {
-        data: fileJsonData,
+        data: Buffer.from(fileJsonData).toString("base64"),
         attributes: {
           key: "value",
         },
