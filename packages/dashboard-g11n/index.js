@@ -2,7 +2,7 @@ const fs = require("fs");
 
 module.exports = {
   processors: {
-    myProcessor: {
+    dataUploaderProcessor: {
       postprocess: function (messages, path) {
 
         const appendToFile = (message) => {

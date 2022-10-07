@@ -1,5 +1,5 @@
 {
-  "name": "my-lint",
+  "name": "dashboard-g11n",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,6 +12,6 @@
   "license": "ISC",
   "devDependencies": {
     "eslint": "^7.21.0",
-    "eslint-plugin-my-lint": "file:packages/eslint"
+    "eslint-plugin-dashboard-g11n": "file:packages/dashboard-g11n"
   }
 }
