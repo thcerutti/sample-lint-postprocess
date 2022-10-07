@@ -23,6 +23,12 @@ jobs:
       - run: 
           name: Run ESLint
           command: yarn lint
+      - run:
+          name: Create post content from lint result file
+          command: node ./scripts/format-content-file.js
+      - run:
+          name: Debug file content
+          command: cat postBody.json
       - run: 
           name: Install curl
           command: sudo apt install curl
