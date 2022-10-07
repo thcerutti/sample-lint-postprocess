@@ -1,17 +1,8 @@
-# Use the latest 2.1 version of CircleCI pipeline process engine.
-# See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
-
-# Define a job to be invoked later in a workflow.
-# See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
   run-lint-and-upload-data:
-    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
-    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
       - image: cimg/node:14.17
-    # Add steps to the job
-    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
       - checkout
       - run:       
@@ -26,9 +17,6 @@ jobs:
       - run:
           name: Create post content from lint result file
           command: node ./scripts/format-content-file.js
-      - run:
-          name: Debug file content
-          command: cat postBody.json
       - run: 
           name: Install curl
           command: sudo apt install curl
@@ -36,10 +24,6 @@ jobs:
           name: Upload lint result data to server
           command: >-
             curl -d "$(cat postBody.json)" -H 'Content-Type: application/json' -X POST $DATA_SERVICE_URL --http1.1
- 
-
-# Invoke jobs via workflows
-# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
   run-eslint:
     jobs:
