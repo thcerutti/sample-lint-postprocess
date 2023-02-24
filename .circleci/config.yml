@@ -1,30 +1,26 @@
 version: 2.1
 jobs:
-  run-lint-and-upload-data:
+  run-sample-pipeline:
     docker:
       - image: cimg/node:14.17
     steps:
       - checkout
-      - run:       
+      - run:
           name: Install Yarn
           command: npm install yarn
-      - run: 
+      - run:
           name: Install dependencies
           command: yarn
-      - run: 
+      - run:
           name: Run ESLint
           command: yarn lint
       - run:
           name: Create post content from lint result file
           command: node ./scripts/format-content-file.js
-      - run: 
-          name: Install curl
-          command: sudo apt install curl
       - run:
-          name: Upload lint result data to server
-          command: >-
-            curl -d "$(cat postBody.json)" -H 'Content-Type: application/json' -X POST $DATA_SERVICE_URL --http1.1
+          name: Call data exporter script
+          command: node ./ci/g11n-data-exporter/index.js
 workflows:
   run-eslint:
     jobs:
-      - run-lint-and-upload-data
+      - run-sample-pipeline
