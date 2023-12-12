@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test-custom-rule": "node ./plugins/enforce-foo-bar.test.js",
+    "test-custom-rule": "node ./plugins/enforceFooBar/enforce-foo-bar.test.js",
     "lint": "eslint src/**/*.js",
     "full-lint": "rm -rf node_modules && yarn && rm -rf ./content.txt && yarn eslint src/**/*.js"
   },
@@ -13,6 +13,6 @@
   "devDependencies": {
     "eslint": "^8.55.0",
     "eslint-plugin-dashboard-g11n": "file:packages/dashboard-g11n",
-    "eslint-plugin-example": "file:plugins"
+    "eslint-plugin-example": "file:plugins/enforceFooBar"
   }
 }
