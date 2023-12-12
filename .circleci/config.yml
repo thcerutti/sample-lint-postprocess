@@ -14,12 +14,6 @@ jobs:
       - run:
           name: Run ESLint
           command: yarn lint
-      - run:
-          name: Create post content from lint result file
-          command: node ./scripts/format-content-file.js
-      - run:
-          name: Call data exporter script
-          command: ./ci/g11n-data-exporter/install.sh
 workflows:
   run-eslint:
     jobs:

@@ -4,14 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test-custom-rule": "node ./plugins/enforceFooBar/enforce-foo-bar.test.js",
     "lint": "eslint src/**/*.js",
     "full-lint": "rm -rf node_modules && yarn && rm -rf ./content.txt && yarn eslint src/**/*.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "^7.21.0",
-    "eslint-plugin-dashboard-g11n": "file:packages/dashboard-g11n"
+    "eslint": "^8.55.0",
+    "eslint-plugin-dashboard-g11n": "file:packages/dashboard-g11n",
+    "eslint-plugin-example": "file:rules/enforceFooBar"
   }
 }
