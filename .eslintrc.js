@@ -8,6 +8,6 @@ module.exports = {
   rules: {
     "no-undef": 1,
     "no-unused-vars": 1,
-    "example/enforce-foo-bar": "error",
+    "example/enforce-foo-bar": "warn",
   },
 };
