@@ -23,3 +23,9 @@ npx eslint ./src/example.js
 ```sh
 yarn test-custom-rule
 ```
+
+## WIP: test the code analysis in the sandbox
+
+```sh
+rm -rf node_modules && yarn && npx eslint ./src/example.js
+```

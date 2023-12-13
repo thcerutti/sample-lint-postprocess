@@ -12,7 +12,9 @@
   "license": "ISC",
   "devDependencies": {
     "eslint": "^8.55.0",
+    "eslint-plugin-check-external-url": "file:rules/checkExternalUrl",
     "eslint-plugin-dashboard-g11n": "file:packages/dashboard-g11n",
-    "eslint-plugin-example": "file:rules/enforceFooBar"
+    "eslint-plugin-example": "file:rules/enforceFooBar",
+    "eslint-plugin-react": "^7.33.2"
   }
 }
