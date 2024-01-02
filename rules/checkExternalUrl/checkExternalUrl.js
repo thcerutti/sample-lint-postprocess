@@ -44,45 +44,10 @@ module.exports = {
           node.type === 'VariableDeclarator' &&
           node.init?.type === 'ArrowFunctionExpression'
         ) {
-          // console.log("node-init-body[0]-argument", node.init.body.body[0].argument);
-          // node.init.body.body[0].argument -> arrow function do componente
           const componentBodyRoot = node.init.body.body[0].argument
-          // console.log("componentBodyRoot", componentBodyRoot);
-
-          // console.log(componentBodyRoot.children);
           componentBodyRoot?.children.forEach((child) => {
             checkUrl(child)
           })
-
-          // if (node.id.name === "MySampleComponent") {
-          // console.log(
-          //   "node",
-          // console.log(node.init.body.body[0].argument.children[1].openingElement
-          //   .attributes[0].value.raw);
-          // );
-          // }
-
-          // if (node.parent.kind === "const") {
-          //   if (node.id.type === "Identifier" && node.id.name === "foo") {
-          //     if (
-          //       node.init &&
-          //       node.init.type === "Literal" &&
-          //       node.init.value !== "bar"
-          //     ) {
-          //       context.report({
-          //         node,
-          //         message:
-          //           'Value other than "bar" assigned to `const foo`. Unexpected value: {{ notBar }}.',
-          //         data: {
-          //           notBar: node.init.value,
-          //         },
-          //         fix(fixer) {
-          //           return fixer.replaceText(node.init, '"bar"');
-          //         },
-          //       });
-          //     }
-          //   }
-          // }
         }
       },
     }
