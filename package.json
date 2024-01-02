@@ -18,5 +18,9 @@
     "eslint-plugin-dashboard-g11n": "file:packages/dashboard-g11n",
     "eslint-plugin-example": "file:rules/enforceFooBar",
     "eslint-plugin-react": "^7.33.2"
+  },
+  "dependencies": {
+    "@resultadosdigitais/tangram-components": "^8.16.0",
+    "styled-components": "^6.1.6"
   }
 }

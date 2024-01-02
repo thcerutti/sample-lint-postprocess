@@ -1,20 +1,23 @@
-const verifyUrl = () => {};
-
 module.exports = {
   meta: {
-    type: "problem",
+    type: 'problem',
     docs: {
-      description: "Enforce external URL to not be translated.",
+      description: 'Enforce external URL to not be translated.',
     },
-    fixable: "code",
+    fixable: 'code',
     schema: [],
   },
   create(context) {
-    // console.log("context", context);
+    console.log('context', context)
+    console.log('context.filename', context.filename)
     const checkUrl = (node) => {
-      if (node.openingElement?.name?.name === 'a') {
+      if (
+        node.openingElement?.attributes.some(
+          (attribute) => attribute.name.name === 'href',
+        )
+      ) {
         console.log('node is a link', node.openingElement.attributes)
-        node.openingElement.attributes
+        node.openingElement?.attributes
           .filter((attribute) => attribute.name.name === 'href')
           .forEach((href) => {
             const isExternalUrl = new RegExp('^https?://').test(
@@ -52,4 +55,4 @@ module.exports = {
       },
     }
   },
-};
+}

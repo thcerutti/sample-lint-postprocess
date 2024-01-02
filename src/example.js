@@ -1,19 +1,26 @@
 const React = require("react");
+const { Link } = require('@resultadosdigitais/tangram-components')
+
+const StyledLink = styled(Link)`
+  color: red;
+`
 
 function correctFooBar() {
-  const foo = "bar";
+  const foo = 'bar'
 }
 
-function incorrectFoo(){
-  const foo = "baz"; // Problem!
+function incorrectFoo() {
+  const foo = 'baz' // Problem!
 }
 
 const MySampleComponent = () => {
   return (
     <>
-      <a href='http://action'>Google</a>
+      <StyledLink href='http://action'>Google</StyledLink>
+      <Link href='/action'>Google</Link>
+      <Link href='http://google.com'>Google</Link>
     </>
   )
-};
+}
 
 module.exports = MySampleComponent;
