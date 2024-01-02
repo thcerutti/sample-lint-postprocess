@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test-custom-rule": "node ./plugins/enforceFooBar/enforce-foo-bar.test.js",
+    "test-custom-rule": "node ./rules/enforceFooBar/enforce-foo-bar.test.js",
+    "test-url-rule": "node ./rules/checkExternalUrl/check-external-url.test.js",
+    "test-sandbox": "rm -rf node_modules && yarn && yarn lint",
     "lint": "eslint src/**/*.js",
     "full-lint": "rm -rf node_modules && yarn && rm -rf ./content.txt && yarn eslint src/**/*.js"
   },

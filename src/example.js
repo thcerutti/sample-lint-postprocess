@@ -11,9 +11,9 @@ function incorrectFoo(){
 const MySampleComponent = () => {
   return (
     <>
-      <a href="https://www.google.com">Google</a>
+      <a href='http://action'>Google</a>
     </>
-  );
+  )
 };
 
 module.exports = MySampleComponent;

@@ -12,38 +12,46 @@ module.exports = {
   create(context) {
     // console.log("context", context);
     const checkUrl = (node) => {
-      if (node.openingElement?.name?.name === "a") {
-        console.log("node is a link", node.openingElement.attributes);
-        node.openingElement.attributes.filter(attribute => attribute.name.name === "href").forEach(href => {
-          const isExternalUrl = new RegExp("^https?://").test(href.value.value);
+      if (node.openingElement?.name?.name === 'a') {
+        console.log('node is a link', node.openingElement.attributes)
+        node.openingElement.attributes
+          .filter((attribute) => attribute.name.name === 'href')
+          .forEach((href) => {
+            const isExternalUrl = new RegExp('^https?://').test(
+              href.value.value,
+            )
 
-          if (isExternalUrl) {
-            console.log("href is external", href.value.value)
-          }
-        });
-        return;
+            if (isExternalUrl) {
+              console.log('href is external', href.value.value)
+              context.report({
+                node,
+                message: `External URL found ("${href.value.value}")`,
+              })
+            }
+          })
+        return
       }
       if (node.children) {
         node.children.forEach((child) => {
-          checkUrl(child);
-        });
+          checkUrl(child)
+        })
       }
-    };
+    }
     return {
       // Performs action in the function on every variable declarator
       VariableDeclarator(node) {
         if (
-          node.type === "VariableDeclarator" &&
-          node.init.type === "ArrowFunctionExpression"
+          node.type === 'VariableDeclarator' &&
+          node.init?.type === 'ArrowFunctionExpression'
         ) {
           // console.log("node-init-body[0]-argument", node.init.body.body[0].argument);
           // node.init.body.body[0].argument -> arrow function do componente
-          const componentBodyRoot = node.init.body.body[0].argument;
+          const componentBodyRoot = node.init.body.body[0].argument
           // console.log("componentBodyRoot", componentBodyRoot);
 
           // console.log(componentBodyRoot.children);
-          componentBodyRoot.children.forEach((child) => {
-            checkUrl(child);
+          componentBodyRoot?.children.forEach((child) => {
+            checkUrl(child)
           })
 
           // if (node.id.name === "MySampleComponent") {
@@ -53,16 +61,6 @@ module.exports = {
           //   .attributes[0].value.raw);
           // );
           // }
-          context.report({
-            node,
-            message: "url validation called",
-            // data: {
-            //   notBar: node.init.value,
-            // },
-            // fix(fixer) {
-            //   return fixer.replaceText(node.init, '"bar"');
-            // },
-          });
 
           // if (node.parent.kind === "const") {
           //   if (node.id.type === "Identifier" && node.id.name === "foo") {
@@ -87,6 +85,6 @@ module.exports = {
           // }
         }
       },
-    };
+    }
   },
 };
