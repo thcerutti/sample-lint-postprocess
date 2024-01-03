@@ -744,9 +744,6 @@ escape-string-regexp@^4.0.0:
   dependencies:
     fs "^0.0.1-security"
 
-"eslint-plugin-example@file:rules/enforceFooBar":
-  version "1.0.0"
-
 eslint-plugin-react@^7.33.2:
   version "7.33.2"
   resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.33.2.tgz#69ee09443ffc583927eafe86ffebb470ee737608"
