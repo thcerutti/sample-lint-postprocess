@@ -1,8 +1,8 @@
 {
-  "name": "eslint-plugin-example",
+  "name": "eslint-plugin-check-external-url",
   "version": "1.0.0",
   "description": "",
-  "main": "eslint-plugin-example.js",
+  "main": "eslint-plugin-check-external-url.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

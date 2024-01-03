@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test-custom-rule": "node ./plugins/enforceFooBar/enforce-foo-bar.test.js",
+    "test-url-rule": "node ./rules/checkExternalUrl/check-external-url.test.js",
+    "test-sandbox": "rm -rf node_modules && yarn && yarn lint",
     "lint": "eslint src/**/*.js",
     "full-lint": "rm -rf node_modules && yarn && rm -rf ./content.txt && yarn eslint src/**/*.js"
   },
@@ -12,7 +13,12 @@
   "license": "ISC",
   "devDependencies": {
     "eslint": "^8.55.0",
+    "eslint-plugin-check-external-url": "file:rules/checkExternalUrl",
     "eslint-plugin-dashboard-g11n": "file:packages/dashboard-g11n",
-    "eslint-plugin-example": "file:rules/enforceFooBar"
+    "eslint-plugin-react": "^7.33.2"
+  },
+  "dependencies": {
+    "@resultadosdigitais/tangram-components": "^8.16.0",
+    "styled-components": "^6.1.6"
   }
 }
