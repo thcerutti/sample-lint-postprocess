@@ -1,6 +1,4 @@
-console.log("hello world");
-
-const { getWeather } = require("@resultadosdigitais/weather-sample-lib");
+const { getWeather } = require('@resultadosdigitais/weather-sample-lib')
 
 if (!getWeather) {
   console.error('no lib available')
@@ -9,5 +7,5 @@ if (!getWeather) {
 const info = {
   lat: -27.6,
   long: -48.55,
-};
-getWeather(info.lat, info.long).then((data) => console.log(data));
+}
+getWeather(info.lat, info.long).then((data) => console.log(data))

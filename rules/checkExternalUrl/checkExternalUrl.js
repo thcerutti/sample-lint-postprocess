@@ -8,8 +8,8 @@ module.exports = {
     schema: [],
   },
   create(context) {
-    console.log('context', context)
-    console.log('context.filename', context.filename)
+    console.info('context', context)
+    console.info('context.filename', context.filename)
     const checkUrl = (node) => {
       if (
         node.openingElement?.attributes.some(

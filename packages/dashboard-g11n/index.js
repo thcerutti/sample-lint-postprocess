@@ -7,11 +7,11 @@ module.exports = {
 
         const appendToFile = (message) => {
           const fileName = "content.txt";
-          
+
           let prefix = fs.existsSync(fileName) ? "," : "";
           fs.appendFile(fileName, prefix + JSON.stringify(message), (err) =>{
             if (err)
-              console.log('Error: ', err)
+              console.error('Error: ', err)
           });
         };
 
